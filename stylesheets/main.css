@@ -1,0 +1,59 @@
+:root {}
+
+.red {
+  background-color: red;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.blue {
+  background-color: blue;
+}
+
+* {
+  height: auto;
+  border: 2px yellow solid !important;
+
+}
+
+nav {
+  background-color: purple;
+}
+
+
+
+
+menu {
+  background-color: green;
+  height: auto;
+
+
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+footer {
+  background-color: tomato;
+}
