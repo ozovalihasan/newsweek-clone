@@ -1,12 +1,12 @@
 # newsweek-clone
 
 
-This is a microverse project focusing on responsive design by using Bootstrap. It was developed as a requirement for Microverse HTML and CSS course.
+This is a Microverse project focusing on responsive design by using Bootstrap. It was developed as a requirement for Microverse HTML and CSS course.
 
 ![screenshot](./images/app_screenshot.png)
 
 Additional description about the project and its features.
-In this Microverse project, we made use classes provided by Bootstrap to make a clone of [ The Next Web](https://www.newsweek.com/) page . 
+In this Microverse project, we made use classes provided by Bootstrap to make a clone of [ NewsWeek](https://www.newsweek.com/) page . 
 
 ## Built With
 
