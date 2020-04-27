@@ -1,0 +1,2217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Newsweek Clone</title>
+  <link rel="stylesheet" href="stylesheets/reset.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+  <link rel="stylesheet" href="stylesheets/main.css" />
+  <link rel="icon" href="images/icon-top.png">
+  <script src="https://kit.fontawesome.com/8c7f545978.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+  
+</head>
+
+<body>
+  <nav id="navbar" class="navbar height-lg fixed-top w-100 ">
+    <div  class=" w-100 d-flex align-items-baseline">
+      <div class=" d-flex w-auto mr-auto ">
+        <svg id="logo" class="logo logo-lg m-top-2 flex-shrink-0" x="0px" y="0px" viewBox="0 0 395.6 60"
+          style="enable-background: new 0 0 395.6 60;" xml:space="preserve">
+          <g>
+            <path class="st0"
+              d="M58.7,10.8h-5.6v48.3H42.8l-25.1-33v22.1h5.6v10.8H0V48.3h5.6V10.8H0V0h17.6L41,30.7V10.8h-5.6V0h23.2	L58.7,10.8L58.7,10.8z M95.8,38c0,0.9,0,1.8-0.1,2.7H70.3c-0.7,8.2,2.4,10.6,7.1,10.6c3.9,0,6.9-2.6,6.9-6.6h11	c-0.3,7.2-4,15.4-18.5,15.4c-14.5,0-21.3-10.5-21.3-22.1c0-10.5,7-21.6,21-21.6C89.9,16.3,95.8,25.6,95.8,38 M159,27.3h-3.7	l-9.4,31.8h-12.5l-5.9-17.4l-5.3,17.4h-12.8L98.8,27.4h-3.7V16.6h22.1v10.7h-5.6l5.8,16.9l7.6-27.6h6.8l9.3,27.6l5-16.9h-5.6V16.6	H159L159,27.3L159,27.3z M174.5,27.8c0,1.5,1.2,2.5,5.4,3.9l6,2c5.5,1.8,12.1,5.9,12.1,13.4c0,8.8-6.6,13-14.7,13	c-6.5,0-11.5-3.2-12.9-4.6V59h-10.8V44.4h10.6c0.3,4.8,4.6,7.3,8.5,7.3c3.2,0,4.7-1.4,4.7-3c0-2-1.2-3.1-6.5-4.8l-5.3-1.8	c-5.4-1.7-11.4-5.7-11.4-12.8c0-8.7,7.7-13.1,14.3-13.1c6.8,0,10.1,1.9,11.8,3.8l0.1-3.3H197v13.3h-11.2c-0.2-3.6-3.7-5.2-7.2-5.2	C175.8,24.8,174.5,26.1,174.5,27.8 M262.8,27.3h-3.7l-9.4,31.8h-12.5l-5.9-17.4L226,59.1h-12.8l-10.6-31.7h-3.7V16.6h22.1v10.7	h-5.6l5.8,16.9l7.6-27.6h6.8l9.3,27.7l5-16.9h-5.6V16.6h18.5V27.3z M302,37.9c0,0.9,0,1.8-0.1,2.7h-25.4	c-0.7,8.2,2.4,10.6,7.1,10.6c3.9,0,6.9-2.6,6.9-6.6h11c-0.3,7.2-4,15.4-18.5,15.4c-14.5,0-21.3-10.5-21.3-22.1	c0-10.5,7-21.6,21-21.6C296.1,16.2,302,25.5,302,37.9 M343.9,37.8c0,0.9,0,1.8-0.1,2.7h-25.4c-0.7,8.2,2.4,10.6,7.1,10.6	c3.9,0,6.9-2.6,6.9-6.6h11c-0.3,7.2-4,15.4-18.5,15.4c-14.5,0-21.3-10.5-21.3-22.1c0-10.5,7-21.6,21-21.6	C338,16.1,343.9,25.4,343.9,37.8 M389.9,59h-12.8l-13.3-17.3l-4.3,3.2v3.4h3.8V59h-19.6V48.3h3.7V10.6h-5.6V0h17.8v33.9l8.9-6.5	h-5.6V16.6h23.9v10.8h-3.7l-9.3,7l10.7,13.9h5.6L389.9,59L389.9,59z M395.6,56.6c0,0.5-0.1,0.9-0.4,1.2c-0.2,0.4-0.5,0.7-0.9,0.9	c-0.4,0.2-0.8,0.4-1.3,0.4c-0.5,0-0.9-0.1-1.2-0.4c-0.4-0.2-0.7-0.5-0.9-0.9c-0.2-0.4-0.4-0.8-0.4-1.2c0-0.5,0.1-0.9,0.4-1.2	c0.2-0.4,0.5-0.7,0.9-0.9c0.4-0.2,0.8-0.4,1.2-0.4c0.5,0,0.9,0.1,1.3,0.4c0.4,0.2,0.7,0.5,0.9,0.9	C395.5,55.8,395.6,56.2,395.6,56.6 M394.6,58c0.4-0.4,0.6-0.9,0.6-1.4c0-0.6-0.2-1-0.6-1.4s-0.9-0.6-1.4-0.6s-1,0.2-1.4,0.6	c-0.4,0.4-0.6,0.9-0.6,1.4c0,0.6,0.2,1,0.6,1.4c0.4,0.4,0.9,0.6,1.4,0.6S394.2,58.4,394.6,58 M393.6,56.8c0.1,0.1,0.2,0.1,0.2,0.1	c0.1,0.1,0.2,0.2,0.2,0.3c0,0,0.2,0.3,0.4,0.8h-0.8c-0.3-0.5-0.4-0.8-0.5-0.9c-0.1-0.1-0.2-0.2-0.3-0.2c0,0-0.1,0-0.1,0v1.1h-0.6	v-2.6h1.2c0.4,0,0.6,0.1,0.7,0.2c0.2,0.2,0.2,0.3,0.2,0.6c0,0.2-0.1,0.4-0.2,0.5C393.9,56.6,393.8,56.7,393.6,56.8 M393.5,56.3	c0.1-0.1,0.1-0.2,0.1-0.3s-0.1-0.2-0.1-0.3c-0.1-0.1-0.2-0.1-0.4-0.1h-0.3v0.7h0.3C393.3,56.4,393.4,56.4,393.5,56.3 M318.4,33.5	h13.9c0-6-3.9-8.4-6.8-8.4C322.1,25.2,318.6,27.9,318.4,33.5 M276.5,33.6h13.9c0-6-3.9-8.4-6.8-8.4C280.3,25.2,276.8,28,276.5,33.6 M70.3,33.7h13.9c0-6-3.9-8.4-6.8-8.4C74.1,25.3,70.6,28.1,70.3,33.7">
+            </path>
+          </g>
+        </svg>
+        <div id="weather-bar" class="weather-bar weather-bar-lg">
+          <div class=" d-flex flex-wrap font-weight-bold">
+            <img class="weather" src="https://g.newsweek.com/img/weather/11.webp" alt="" />
+            &nbsp;&nbsp;11°
+            <div class="d-flex flex-shrink-0 flex-wrap">
+
+              <div class="text-top ml-2">
+                Gaziosmanpaşa, TR&nbsp;&nbsp;
+              </div>
+              <svg class="" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 8 14"
+                style="enable-background:new 0 0 8 14;" xml:space="preserve">
+                <g  fill="#fff">
+                  <defs>
+                    <rect  width="8" height="14"></rect>
+                  </defs>
+                  <clipPath >
+                    <use xlink:href="#SVGID_1_" style="overflow:visible;"></use>
+                  </clipPath>
+                  <g  class="st0">
+                    <g>
+                      <polygon class="st1" points="8,7 1.1,0 0,1.1 5.9,7 0,12.9 1.1,14 8,7 8,7	"></polygon>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </div>
+
+
+          </div>
+          <div id="weather-date" class="weather-date d-none d-lg-block">
+            Sat, Apr 25, 2020
+          </div>
+        </div>
+      </div>
+
+      <div class=" w-auto align-items-baseline d-flex flex-nowrap ">
+        <button class="text-nowrap text-white bg-transparent font-size-18 font-weight-bold border-0 text-uppercase ">
+          Sign In
+        </button>
+        <button class="d-flex flex-nowrap text-uppercase font-size-18 font-weight-bold bg-white border-0 first-color">
+          Subscribe
+          <svg class="subscribe-btn arrow-sign my-auto " version="1.1"  xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 8 14"
+            style="enable-background:new 0 0 8 14;" xml:space="preserve">
+            <g >
+              <defs>
+                <rect id="SVGID_1_" width="8" height="14"></rect>
+              </defs>
+              <clipPath id="SVGID_2_">
+                <use xlink:href="#SVGID_1_" style="overflow:visible;"></use>
+              </clipPath>
+              <g  class="st0">
+                <g>
+                  <polygon class="st1" points="8,7 1.1,0 0,1.1 5.9,7 0,12.9 1.1,14 8,7 8,7	"></polygon>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </button>
+        <a href="#" id="menu-a" class="menu-a-lg ml-4">
+
+          <i class="fas fa-bars menu mx-auto "></i>
+        </a>
+
+      </div>
+    </div>
+
+
+    
+  </nav>
+  <div id="menu-bar"
+    class="position-relative menu-bar d-none d-lg-flex bg-white  pt-2 w-auto pr-5 font-weight-bold align-items-center">
+    <a href="#">U.S.</a>
+    <a href="#">World</a>
+    <a href="#">Business</a>
+    <a href="#">Tech & Science</a>
+    <a href="#">Culture</a>
+    <a href="#">Newsgeek</a>
+    <a href="#">Sports</a>
+    <a href="#">Health</a>
+    <a href="#">The Debate</a>
+    <a href="#">Vantage</a>
+    <a href="#">Weather</a>
+    <div class="d-flex align-items-center">
+      <input type="text" class="" placeholder="Search">
+      <i class="fas fa-search  "></i>
+    </div>
+
+
+
+
+
+  </div>
+  <main class=" bg-white container-fluid">
+
+
+
+    <div class=" top-part mt-1 pt-3 row">
+    <div class="part-0  col d-md-none">
+      <div class="top-story d-md-none content" id="top-story-mobile">
+        <div class="card m-0 p-0 rounded-0">
+          <div class="d-md-block block-title">
+            TOP STORY
+          </div>
+
+          <div class="card-img-top">
+            <a href="#" class="img-category text-decoration-none">
+              <p class="text-uppercase m-0">Tech &amp; Science</p>
+            </a>
+            <a href="#">
+              <img class="w-100" src="images/los-angeles-skyline.jpg" alt="" />
+            </a>
+          </div>
+
+          <div class="card-body">
+            <a href="#">
+              <h5 class="card-title font-weight-bold">
+                Earthquake Hits Near View Park-Windsor Hills, Los Angeles
+              </h5>
+            </a>
+
+            <p class="card-text ">
+              People living in Los Angeles who felt the quake took to social
+              media describing their experiences.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="part-1 sticky-md col-md-5 col-lg">
+      <div class="featured-stories ">
+        <div class="block-title">
+          FEATURED STORIES
+        </div>
+        <div class="card m-0 p-0 rounded-0">
+          <div class="card-img-top">
+            <a href="#" class="img-category text-decoration-none">
+              <p class="text-uppercase m-0">World</p>
+            </a>
+            <a href="#">
+              <img class="w-100" src="images/north-korea-kim-air-force-drills.jpg" alt="" />
+            </a>
+          </div>
+
+          <div class="card-body">
+            <a href="#">
+              <h5 class="card-title font-weight-bold">
+                U.S. Intelligence Has No Evidence Kim Jong Un In Grave
+                Condition: Officials
+              </h5>
+            </a>
+
+            <p class="card-text">
+              Senior U.S. intelligence officials told Newsweek that there
+              was no evidence to suggest North Korean supreme leader Kim
+              Jong Un's health was in grave condition.
+            </p>
+          </div>
+        </div>
+        <div class="card m-0 p-0 rounded-0">
+          <div class="card-img-top">
+            <a href="#" class="img-category text-decoration-none">
+              <p class="text-uppercase m-0">U.S.</p>
+            </a>
+            <a href="#">
+              <img class="w-100" src="images/betsy-devos.jpg" alt="" />
+            </a>
+          </div>
+
+          <div class="card-body">
+            <a href="#">
+              <h5 class="card-title font-weight-bold">
+                DeVos Blocks Undocumented College Students from Receiving
+                Covid-19 Aid
+              </h5>
+            </a>
+
+            <p class="card-text">
+              While American citizens fall under those who qualify for
+              emergency assistance, hundreds of thousands of undocumented
+              students will not be allowed access to the aid.
+            </p>
+          </div>
+        </div>
+        <div class="card m-0 p-0 rounded-0">
+          <div class="card-img-top">
+            <a href="#" class="img-category text-decoration-none">
+              <p class="text-uppercase m-0">Tech &amp; Science</p>
+            </a>
+            <a href="#">
+              <img class="w-100" src="images/los-angeles.jpg" alt="" />
+            </a>
+          </div>
+
+          <div class="card-body">
+            <a href="#">
+              <h5 class="card-title font-weight-bold">
+                Earth Day 2020: Ways the Planet Has Changed Due to COVID-19
+              </h5>
+            </a>
+
+            <p class="card-text">
+              "The pandemic is a reminder that there is no separation
+              between humans and the environment," researcher Karen O'Neill
+              said.
+            </p>
+          </div>
+        </div>
+        <div class="card m-0 p-0 rounded-0">
+          <div class="card-img-top">
+            <a href="#" class="img-category text-decoration-none">
+              <p class="text-uppercase m-0">U.S.</p>
+            </a>
+            <a href="#">
+              <img class="w-100" src="images/whitmer.jpg" alt="" />
+            </a>
+          </div>
+
+          <div class="card-body">
+            <a href="#">
+              <h5 class="card-title font-weight-bold">
+                Under Fire, Michigan Governor Pulls Coronavirus Contract
+                From Consultancy
+              </h5>
+            </a>
+
+            <p class="card-text">
+              Gov. Gretchen Whitmer cancelled the contract with Great Lakes
+              Community Engagement late Tuesday, after Republicans objected
+              to the firm's connections with many Democratic candidates.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="part-2" class="part-2 sticky-lg col-md-12 col-lg order-md-2">
+      <div class="opinion">
+        <div class="block-title">Opinion</div>
+
+        <div class="card m-0 rounded-0">
+          <div class="row no-gutters">
+            <div class="col-auto">
+              <a href="#" class="card-img">
+                <img src="images/lee-habeeb.png" class="w-auto" alt="..." />
+              </a>
+            </div>
+            <div class="col">
+              <div class="card-body">
+                <a href="#" class="text-decoration-none">
+                  <h5 class="card-title font-weight-bold m-0 p-0">
+                    We Need to Talk About Death
+                  </h5>
+                </a>
+
+                <p class="p-0 card-text card-text">By Zachary Karabell</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card m-0 rounded-0 border-top border-color-first">
+          <div class="row no-gutters">
+            <div class="col-auto">
+              <a href="#" class="card-img">
+                <img src="images/julie-hollar.png" class="w-auto" alt="..." />
+              </a>
+            </div>
+            <div class="col">
+              <div class="card-body">
+                <a href="#" class="text-decoration-none">
+                  <h5 class="card-title font-weight-bold m-0 p-0">
+                    Trump Isn't Coming to the Rescue. Governors and Mayors
+                    Must Work Together to Save Lives
+                  </h5>
+                </a>
+
+                <p class="p-0 card-text card-text">By Michael A. Nutter</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card m-0 rounded-0 border-top border-color-first">
+          <div class="row no-gutters">
+            <div class="col-auto">
+              <a href="#" class="card-img">
+                <img src="images/zachary-karabell.png" class="w-auto" alt="..." />
+              </a>
+            </div>
+            <div class="col">
+              <div class="card-body">
+                <a href="#" class="text-decoration-none">
+                  <h5 class="card-title font-weight-bold m-0 p-0">
+                    A One-Size-Fits-All Reopening Makes No Sense for America
+                  </h5>
+                </a>
+
+                <p class="p-0 card-text card-text">By Lee Habeeb</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card m-0 rounded-0 border-top border-color-first">
+          <div class="row no-gutters">
+            <div class="col-auto">
+              <a href="#" class="card-img">
+                <img src="images/michael-nutter.png" class="w-auto" alt="..." />
+              </a>
+            </div>
+            <div class="col">
+              <div class="card-body">
+                <a href="#" class="text-decoration-none">
+                  <h5 class="card-title font-weight-bold m-0 p-0">
+                    Trump Is Using His Briefings to Spread Lies. The Media
+                    Should Not Let Him
+                  </h5>
+                </a>
+
+                <p class="p-0 card-text card-text">By Julie Hollar</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="the-debate">
+        <div class="block-title ">
+          <a href="href" class="text-decoration-none font-16">
+            THE DEBATE
+          </a>
+        </div>
+        <div class="card m-0 rounded-0">
+          <div class="row no-gutters top-line-pink  align-items-center">
+            <div class="col-auto">
+              <a href="#" class="">
+                <img class="" src="images/trump-pence.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="col">
+              <div class="card-body ml-2 ">
+                <a href="#" class="text-decoration-none ">
+                  <h5 class=" mt-0 font-weight-bold">
+                    Trump's Right. The WHO Is Not Fit for Purpose</h5>
+                </a>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="row  no-gutters  align-items-center">
+
+
+            <div class="col ">
+              <div class=" card-body d-flex align-items-baseline">BY
+                <a href="#" class="text-decoration-none ">
+                  <span class="card-title  font-weight-bold">&nbsp; NIGEL FARAGE</span>
+                </a>
+
+
+              </div>
+            </div>
+            <div class="col-auto ">
+              <a href="#" class="">
+                <img class="debate-author " src="images/nigel-farage.png" alt="" />
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <div class=" debate-vs  text-center  ">
+          vs
+        </div>
+
+        <div class="card m-0 rounded-0">
+          <div class="row no-gutters top-line-blue  align-items-center">
+            <div class="col-auto">
+              <a href="#" class="">
+                <img class="" src="images/donald-trump.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="col">
+              <div class="card-body ml-2  ">
+                <a href="#" class="text-decoration-none ">
+                  <h5 class=" mt-0 font-weight-bold">Defunding the WHO Mid-Pandemic Is Lunacy</h5>
+                </a>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="row no-gutters  align-items-center">
+
+
+            <div class="col ">
+              <div class=" card-body d-flex align-items-baseline">BY
+                <a href="#" class="text-decoration-none ">
+                  <span class="card-title  font-weight-bold">&nbsp; JAMIE METZL</span>
+                </a>
+
+
+              </div>
+            </div>
+            <div class="col-auto">
+              <a href="#" class="">
+                <img class="debate-author " src="images/jamie-metzl.png" alt="" />
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+      <div id="latest-news" class="d-none d-md-block">
+
+      </div>
+    </div>
+    <div class="part-3 d-flex flex-column sticky-md col-md-7 col-lg-5 order-md-1">
+      <div class="top-story d-none d-md-block" id="second-column">
+      </div>
+      <div class="more-stories  order-md-2 ">
+        <div class="block-title">more stories</div>
+        <div class="card m-0 rounded-0">
+          <div class="row no-gutters">
+            <div class="col-auto">
+              <a href="#" class="">
+                <img class="" src="images/people-wait-line-food-bank.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="col">
+              <div class="card-body">
+                <a href="#">
+                  <h5 class="card-title mt-0 font-weight-bold">Majority of Low Income Americans Will Struggle to Pay
+                    Bills in April:
+                    Poll</h5>
+                </a>
+
+                <p class="pb-0 card-text ">
+                  A new survey also revealed that less than one in four
+                  Americans believed the economy was in a good or excellent
+                  condition.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card m-0 rounded-0">
+          <div class="row no-gutters">
+            <div class="col-auto">
+              <a href="#" class="">
+                <img class="" src="images/covid-19-testing-los-angeles.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="col">
+              <div class="card-body">
+                <a href="#">
+                  <h5 class="card-title mt-0 font-weight-bold">FDA Authorizes First At-Home Coronavirus Test</h5>
+                </a>
+
+                <p class="pb-0 card-text">
+                  LabCorp's home collection test to diagnose coronavirus
+                  infection will be made available to consumers in most
+                  states over the next few weeks.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card m-0 rounded-0">
+          <div class="row no-gutters">
+            <div class="col-auto">
+              <a href="#" class="">
+                <img class="" src="images/us-wti-oil-price-drop-low-may.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="col">
+              <div class="card-body">
+                <a href="#">
+                  <h5 class="card-title mt-0 font-weight-bold">Low Oil Prices Could Stretch Into May, Analysts Say
+                    Following
+                    Collapse</h5>
+                </a>
+
+                <p class="pb-0 card-text">
+                  U.S. oil prices went negative on Monday for the first time
+                  in history, as the market battled with a
+                  coronavirus-driven lack of demand, over-supply and limited
+                  storage options.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card m-0 rounded-0">
+          <div class="row no-gutters">
+            <div class="col-auto">
+              <a href="#" class="">
+                <img class="" src="images/coronavirus.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="col">
+              <div class="card-body">
+                <a href="#">
+                  <h5 class="card-title mt-0 font-weight-bold">Why the COVID-19 Death Forecasts Are Wrong
+                    2 
+                  </h5>                  
+                </a>
+
+                <p class="pb-0 card-text">
+                  Models answer questions based on the information they are
+                  fed—but with coronavirus, that information is constantly
+                  changing and incomplete.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card m-0 rounded-0">
+          <div class="row no-gutters">
+            <div class="col-auto">
+              <a href="#" class="">
+                <img class="" src="images/united-nation-secretary-general-guterres.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="col">
+              <div class="card-body">
+                <a href="#">
+                  <h5 class="card-title mt-0 font-weight-bold">U.N. Secretary-General: Climate Devastation Will
+                    Surpass Pandemic's
+                    Effects</h5>
+                </a>
+
+                <p class="pb-0 card-text">
+                  António Guterres urged governments to capitalize on their
+                  pandemic recovery efforts by incorporating efforts to
+                  address climate change.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card m-0 rounded-0">
+          <div class="row no-gutters">
+            <div class="col-auto">
+              <a href="#" class="">
+                <img class="" src="images/man-wearing-face-mask.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="col">
+              <div class="card-body">
+                <a href="#">
+                  <h5 class="card-title mt-0 font-weight-bold">What Is Phase One of Trump's U.S. Coronavirus Reopening
+                    Plan?</h5>
+                </a>
+
+                <p class="pb-0 card-text">
+                  The first phase will see restaurants, movie theaters,
+                  sporting venues, places of worship and gyms reopening.
+                  However, social distancing rules still need to be
+                  observed.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card m-0 rounded-0">
+          <div class="row no-gutters">
+            <div class="col-auto">
+              <a href="#" class="">
+                <img class="" src="images/coronavirus-new-york.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="col">
+              <div class="card-body">
+                <a href="#">
+                  <h5 class="card-title mt-0 font-weight-bold">N.Y. Will Reopen Different Regions Of State Depending
+                    on Infection
+                    Rates</h5>
+                </a>
+
+                <p class="pb-0 card-text">
+                  On Tuesday, New York Governor Andrew Cuomo confirmed that
+                  the state will reopen on a regional basis, looking at
+                  hospitalizations and coronavirus infection rates across
+                  different areas.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card m-0 rounded-0">
+          <div class="row no-gutters">
+            <div class="col-auto">
+              <a href="#" class="">
+                <img class="" src="images/attorney-general-william-barr.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="col">
+              <div class="card-body">
+                <a href="#">
+                  <h5 class="card-title mt-0 font-weight-bold">Barr Says Stay-at-Home Orders Are 'Disturbingly Close'
+                    to House
+                    Arrest</h5>
+                </a>
+
+                <p class="pb-0 card-text">
+                  William Barr said that states must soon begin replacing
+                  the orders with more targeted restrictions.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card m-0 rounded-0">
+          <div class="row no-gutters">
+            <div class="col-auto">
+              <a href="#" class="">
+                <img class="" src="images/coronavirus-pandemic-free-cash-payments.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="col">
+              <div class="card-body">
+                <a href="#">
+                  <h5 class="card-title mt-0 font-weight-bold">Project 100 Is Handing Out Free $1,000 Cash Payments to
+                    100,000
+                    Households</h5>
+                </a>
+
+                <p class="pb-0 card-text">
+                  The charity program targets people on SNAP food benefits
+                  to support their finances during the coronavirus pandemic
+                  and has a number of high-profile backers.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card m-0 rounded-0">
+          <div class="row no-gutters">
+            <div class="col-auto">
+              <a href="#" class="">
+                <img class="" src="images/statista.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="col">
+              <div class="card-body">
+                <a href="#">
+                  <h5 class="card-title mt-0 font-weight-bold">Global Coronavirus Cases Pass 2.5 Million</h5>
+                </a>
+
+                <p class="pb-0 card-text">
+                  The U.S. remains the epicenter of the outbreak, with more
+                  deaths from the virus than any other country in the world.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card m-0 rounded-0 border-0">
+          <div class="row no-gutters">
+            <div class="col-auto">
+              <a href="#" class="">
+                <img class="" src="images/india-gate-new-delhi.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="col">
+              <div class="card-body">
+                <a href="#">
+                  <h5 class="card-title mt-0 font-weight-bold">NASA Satellite Reveals Huge Drop in Air Pollution Over
+                    Parts of
+                    India</h5>
+                </a>
+
+                <p class="pb-0 card-text">
+                  "I have never seen aerosol values so low in the
+                  Indo-Gangetic Plain at this time of year," said NASA
+                  scientist Pawan Gupta.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="heroes-pandemic  order-md-1">
+        <div class="row">
+          <div class="block-title col-md-12">HEROES OF THE PANDEMIC</div>
+          <div class="card  col-md-4 container-fluid rounded-0">
+            <div class="card-img-top">
+              <a href="#" class="img-category text-decoration-none">
+                <p class="text-capitalize m-0">Pandemic Heroes</p>
+              </a>
+              <a href="#">
+                <img class="w-100" src="images/zoe-monterola-founder-six-feet-supplies.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="card-body">
+              <a href="#" class="text-decoration-none">
+                <h5 class="card-title font-weight-bold">Teenagers
+                  Shop for the Vulnerable During Coronavirus Emergency</h5>
+              </a>
+
+              <p class="card-text">"I almost cried," said a user of Six Feet Supplies, a charity
+                started by teenagers who shop for those susceptible to COVID-19.</p>
+            </div>
+          </div>
+          <div class="card  col-md-4 rounded-0">
+            <div class="card-img-top">
+              <a href="#" class="img-category text-decoration-none">
+                <p class="text-capitalize m-0">Pandemic Heroes</p>
+              </a>
+              <a href="#">
+                <img class="w-100" src="images/sandra-sacco-face-masks-coronavirus.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="card-body">
+              <a href="#" class="text-decoration-none">
+                <h5 class="card-title font-weight-bold">Tennessee
+                  Group Makes Coronavirus Face Masks for Local, International Use</h5>
+              </a>
+
+              <p class="card-text">"We're not selling anything," Sacco said Tuesday. "Every single
+                bit of this is donation-only or nothing."</p>
+            </div>
+          </div>
+          <div class="card  col-md-4 rounded-0">
+            <div class="card-img-top">
+              <a href="#" class="img-category text-decoration-none">
+                <p class="text-capitalize m-0">Pandemic Heroes</p>
+              </a>
+              <a href="#">
+                <img class="w-100" src="images/riya-ortiz-damayan-migrant-workers-association.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="card-body">
+              <a href="#" class="text-decoration-none">
+                <h5 class="card-title font-weight-bold">Organizer
+                  Helps Rebuild New York's Filipino Community Hit by COVID-19</h5>
+              </a>
+
+              <p class="card-text">"When this whole thing started what kept me up at night is the
+                possibility of mass casualties in our community," Riya Ortiz told Newsweek.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="block-title col-md-12">CULTURE & TRAVEL</div>
+          <div class="card col-md-4 rounded-0">
+            <div class="card-img-top">
+              <a href="#" class="img-category text-decoration-none">
+                <p class="text-capitalize m-0">Travel</p>
+              </a>
+              <a href="#">
+                <img class="w-100" src="images/cul-map-underwater-03.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="card-body">
+              <a href="#" class="text-decoration-none">
+                <h5 class="card-title font-weight-bold">These
+                  Underwater Art Exhibits Are Helping to Save Our Oceans</h5>
+              </a>
+
+              <p class="card-text">British eco-artist Jason deCaires Taylor creates eerie undersea
+                worlds that blend sculpture and marine life, creating havens for coral to
+                regenerate and new ecosystems to thrive.</p>
+            </div>
+          </div>
+          <div class="card col-md-4 rounded-0">
+            <div class="card-img-top">
+              <a href="#" class="img-category text-decoration-none">
+                <p class="text-capitalize m-0">Travel</p>
+              </a>
+              <a href="#">
+                <img class="w-100" src="images/cul-uncharted-books-banner.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="card-body">
+              <a href="#" class="text-decoration-none">
+                <h5 class="card-title font-weight-bold">10
+                  Books That Will Transport You All Around the World</h5>
+              </a>
+
+              <p class="card-text">While you're grounded and social distancing, you can still
+                travel the globe through the pages of these novels whose setting is often the
+                main character.</p>
+            </div>
+          </div>
+          <div class="card col-md-4 rounded-0">
+            <div class="card-img-top">
+              <a href="#" class="img-category text-decoration-none">
+                <p class="text-capitalize m-0">Cbd</p>
+              </a>
+              <a href="#">
+                <img class="w-100" src="images/cul-cbd-mad-tasty-6-pack.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="card-body">
+              <a href="#" class="text-decoration-none">
+                <h5 class="card-title font-weight-bold">Soothing
+                  CBD Gifts for an Anxious Time</h5>
+              </a>
+
+              <p class="card-text">CBD may be just the thing to make the stress everyone is
+                feeling a little more bearable. We tested more than 25 gift sets that are a
+                timely treat for yourself or someone from whom you are social distancing.</p>
+            </div>
+          </div>
+
+        </div>
+
+
+
+      </div>
+
+
+      <div id="last-part-mobile" class="  d-md-none">
+        <div class="latest-news  ">
+          <div class="block-title">Latest news</div>
+
+          <div class="card m-0 rounded-0">
+            <div class="row no-gutters">
+              <div class="col-auto">
+                <a href="#" class="">
+                  <img class="" src="images/empire-series-finale.jpg" alt="" />
+                </a>
+              </div>
+
+              <div class="col">
+                <div class="card-body">
+                  <a href="#" class="text-decoration-none">
+                    <h5 class="card-title mt-0 font-weight-bold">'Empire'
+                      Series Finale Explained: What Happened in the Last Episode?</h5>
+                  </a>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card m-0 rounded-0">
+            <div class="row no-gutters">
+              <div class="col-auto">
+                <a href="#" class="">
+                  <img class="" src="images/meat-us-food.jpg" alt="" />
+                </a>
+              </div>
+
+              <div class="col">
+                <div class="card-body">
+                  <a href="#" class="text-decoration-none">
+                    <h5 class="card-title mt-0 font-weight-bold">15
+                      Workers At Indiana Meat Production Plant Contract Coronavirus</h5>
+                  </a>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card m-0 rounded-0">
+            <div class="row no-gutters">
+              <div class="col-auto">
+                <a href="#" class="">
+                  <img class="" src="images/trump-international-hotel-during-womens-march.jpg" alt="" />
+                </a>
+              </div>
+
+              <div class="col">
+                <div class="card-body">
+                  <a href="#" class="text-decoration-none">
+                    <h5 class="card-title mt-0 font-weight-bold">Oversight
+                      Chair Demands Administration Not Grant Relief for Trump Hotel</h5>
+                  </a>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card m-0 rounded-0">
+            <div class="row no-gutters">
+              <div class="col-auto">
+                <a href="#" class="">
+                  <img class="" src="images/post-office-box.jpg" alt="" />
+                </a>
+              </div>
+
+              <div class="col">
+                <div class="card-body">
+                  <a href="#" class="text-decoration-none">
+                    <h5 class="card-title mt-0 font-weight-bold">Arizona
+                      GOP Could Lose State House Because Lawmaker Listed P.O. Box As Home</h5>
+                  </a>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card m-0 rounded-0">
+            <div class="row no-gutters">
+              <div class="col-auto">
+                <a href="#" class="">
+                  <img class="" src="images/covid-image.jpg" alt="" />
+                </a>
+              </div>
+
+              <div class="col">
+                <div class="card-body">
+                  <a href="#" class="text-decoration-none">
+                    <h5 class="card-title mt-0 font-weight-bold">72%
+                      of Americans Want Coronavirus Stay-at-Home Orders to Remain: Poll</h5>
+                  </a>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+
+    </div>
+    <div class="part-bottom">
+      <div class="in-the-magazine">
+        <div class="block-title d-flex pb-0">
+          <div class=" mx-auto d-flex align-items-center">
+
+            <div class="icon-n"></div>
+            <div>
+
+              IN THE MAGAZINE
+            </div>
+          </div>
+        </div>
+
+        <div class="row border-top border-color-first pt-2 pb-4">
+          <div class="card col-md container-fluid rounded-0 border-0">
+            <div class="card-img-top">
+              <a href="#" class="img-category text-decoration-none ">
+                <p class="text-uppercase m-0">May 01 ISSUE</p>
+              </a>
+              <a href="#">
+                <img class="w-100" src="images/may-01-2020-cover.jpg" alt="" />
+              </a>
+            </div>
+            <div class="block-title subtitle d-flex ">
+              <div class=" mx-auto  align-items-center">
+                <div>
+                  See All Features
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+          <div class="card col-md container-fluid rounded-0 border-0">
+            <div class="card-img-top">
+
+              <a href="#">
+                <img class="w-100" src="images/fe-whitmer-banner.jpg" alt="" />
+              </a>
+
+              <div class="position-relative  d-flex img-category text-uppercase p-0 my-2">
+                <div class="back-first-color text-white category mr-2 px-2">
+                  Cover
+                </div>
+
+                <a href="#" class="category">
+                  Politics
+                </a>
+              </div>
+
+            </div>
+
+            <div class="card-body">
+              <a href="#">
+                <h5 class="magazine-card-body font-weight-bold">
+                  Michigan Governor Gretchen Whitmer May Pay a Price for Strict
+                  COVID Rules
+                </h5>
+              </a>
+
+
+            </div>
+          </div>
+          <div class="card col-md container-fluid rounded-0 border-0">
+            <div class="card-img-top">
+
+              <a href="#">
+                <img class="w-100" src="images/fe-whitmer-q.jpg" alt="" />
+              </a>
+
+              <div class="position-relative  d-flex img-category text-uppercase p-0 my-2">
+                <div class="back-first-color text-white category mr-2 px-2">
+                  Cover
+                </div>
+
+                <a href="#" class="category">
+                  Politics
+                </a>
+              </div>
+
+            </div>
+
+            <div class="card-body">
+              <a href="#">
+                <h5 class="magazine-card-body font-weight-bold">
+                  Michigan Governor Gretchen Whitmer Talks Trump, VP Rumors And
+                  More
+                </h5>
+              </a>
+
+
+            </div>
+          </div>
+          <div class="card col-md container-fluid rounded-0 border-0">
+            <div class="card-img-top">
+
+              <a href="#">
+                <img class="w-100" src="images/bronx-nyc-hospital-tent-coronavirus-march-2020.jpg" alt="" />
+              </a>
+
+              <div class="position-relative  d-flex img-category text-uppercase p-0 my-2">
+                <div class="back-first-color text-white category mr-2 px-2">
+                  Features
+                </div>
+
+                <a href="#" class="category">
+                  Health
+                </a>
+              </div>
+
+            </div>
+
+            <div class="card-body">
+              <a href="#">
+                <h5 class="magazine-card-body font-weight-bold">
+                  How Doctors are Saving Coronavirus Patients with Innovative New
+                  Techniques
+                </h5>
+              </a>
+
+
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="card col-md container-fluid rounded-0 border-0">
+            <div class="card-img-top">
+
+              <a href="#">
+                <img class="w-100" src="images/coronavirus-pandemic-covid-19-new-york.jpg" alt="" />
+              </a>
+
+              <div class="position-relative  d-flex img-category text-uppercase p-0 my-2">
+                <div class="back-first-color text-white category mr-2 px-2">
+                  Periscope
+                </div>
+
+                <a href="#" class="category">
+                  Culture
+                </a>
+              </div>
+
+            </div>
+
+            <div class="card-body">
+              <a href="#">
+                <h5 class="magazine-card-body font-weight-bold">
+                  Exclusive: How FEMA Missed a Chance to Prepare for Coronavirus
+                  Pandemic
+                </h5>
+              </a>
+
+
+            </div>
+          </div>
+          <div class="card col-md container-fluid rounded-0 border-0">
+            <div class="card-img-top">
+
+              <a href="#">
+                <img class="w-100" src="images/cul-the-last-dance-banner.jpg" alt="" />
+              </a>
+
+              <div class="position-relative  d-flex img-category text-uppercase p-0 my-2">
+                <div class="back-first-color text-white category mr-2 px-2">
+                  Downtime
+                </div>
+
+                <a href="#" class="category">
+                  Culture
+                </a>
+              </div>
+
+            </div>
+
+            <div class="card-body">
+              <a href="#">
+                <h5 class="magazine-card-body font-weight-bold">
+                  Ten Surprising Things We Learned from the Michael Jordan ESPN
+                  Documentary
+                </h5>
+              </a>
+
+
+            </div>
+          </div>
+          <div class="card col-md container-fluid rounded-0 border-0">
+            <div class="card-img-top">
+
+              <a href="#">
+                <img class="w-100" src="images/cul-uncharted-books-banner(1).jpg" alt="" />
+              </a>
+
+              <div class="position-relative  d-flex img-category text-uppercase p-0 my-2">
+                <div class="back-first-color text-white category mr-2 px-2">
+                  Downtime
+                </div>
+
+                <a href="#" class="category">
+                  Culture
+                </a>
+              </div>
+
+            </div>
+
+            <div class="card-body">
+              <a href="#">
+                <h5 class="magazine-card-body font-weight-bold">
+                  10 Books That Will Transport You All Around the World
+
+                </h5>
+              </a>
+
+
+            </div>
+          </div>
+          <div class="card col-md container-fluid rounded-0 border-0">
+            <div class="card-img-top">
+
+              <a href="#">
+                <img class="w-100" src="images/floating-comfort.jpg" alt="" />
+              </a>
+
+              <div class="position-relative  d-flex img-category text-uppercase p-0 my-2">
+                <div class="back-first-color text-white category mr-2 px-2">
+
+
+                  In Focus
+
+                </div>
+
+
+              </div>
+
+            </div>
+
+            <div class="card-body">
+              <a href="#">
+                <h5 class="magazine-card-body font-weight-bold">
+                  Floating Comfort
+
+                </h5>
+              </a>
+
+
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+
+
+    </div>
+    <div class="editor-s-pick">
+      <div class="block-title d-flex pb-0">
+        <div class=" mx-auto d-flex align-items-center">
+
+          <div class="icon-n"></div>
+          <div>
+
+            Editor's Pick
+          </div>
+        </div>
+      </div>
+      <div class="row border-top border-color-first pt-2">
+        <div class="card col-md-6 col-lg-3 container-fluid rounded-0">
+          <div class="card-img-top">
+            <a href="#" class="img-category text-decoration-none">
+              <p class="text-uppercase m-0">Tech &amp; Science</p>
+            </a>
+            <a href="#">
+              <img class="w-100" src="images/coronavirus-test-covid19-getty.jpg" alt="" />
+            </a>
+          </div>
+
+          <div class="card-body">
+            <a href="#">
+              <h5 class="card-title font-weight-bold">
+                20
+                Million Coronavirus Tests a Day Might Not Be Enough to Protect Public
+              </h5>
+            </a>
+
+            <p class="card-text ">Mass testing could cost up to $300 billion over two years, but this is
+              "dwarfed by the economic cost of continued collective quarantine of $100 to 350 billion a
+              month," said the authors of a report published by Harvard.</p>
+          </div>
+        </div>
+        <div class="card col-md-6 col-lg-3 container-fluid rounded-0">
+          <div class="card-img-top">
+            <a href="#" class="img-category text-decoration-none">
+              <p class="text-uppercase m-0">Tech &amp; Science</p>
+            </a>
+            <a href="#">
+              <img class="w-100" src="images/covid19-coronavirus-conjunctivitis-getty-stock.jpg" alt="" />
+            </a>
+          </div>
+
+          <div class="card-body">
+            <a href="#">
+              <h5 class="card-title font-weight-bold">
+                Coronavirus Stayed in Woman's
+                Eyes for 20 Days
+              </h5>
+            </a>
+
+            <p class="card-text ">Conjunctivitis is thought to be a symptom of COVID-19.</p>
+          </div>
+        </div>
+        <div class="card col-md-6 col-lg-3 container-fluid rounded-0">
+          <div class="card-img-top">
+            <a href="#" class="img-category text-decoration-none">
+              <p class="text-uppercase m-0">Tech &amp; Science</p>
+            </a>
+            <a href="#">
+              <img class="w-100" src="images/lions-kruger-park.jpg" alt="" />
+            </a>
+          </div>
+
+          <div class="card-body">
+            <a href="#">
+              <h5 class="card-title font-weight-bold">
+                Coronavirus
+                Lockdown Has Changed Life for Animals for the Better
+              </h5>
+            </a>
+
+            <p class="card-text ">There have been both positive and negative impacts on wildlife during the
+              COVID-19 pandemic.</p>
+          </div>
+        </div>
+        <div class="card col-md-6 col-lg-3 container-fluid rounded-0">
+          <div class="card-img-top">
+            <a href="#" class="img-category text-decoration-none">
+              <p class="text-uppercase m-0">Tech &amp; Science</p>
+            </a>
+            <a href="#">
+              <img class="w-100" src="images/jeff-sessions.jpg" alt="" />
+            </a>
+          </div>
+
+          <div class="card-body">
+            <a href="#">
+              <h5 class="card-title font-weight-bold">
+                Jeff
+                Sessions Urged Trump Admin To 'Immediately' Halt Immigration
+              </h5>
+            </a>
+
+            <p class="card-text ">"Who do we owe our responsibility to as government and public officials? It's
+              to the American people first," Jeff Sessions had said.</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="card col-md-6 col-lg-3 container-fluid rounded-0">
+          <div class="card-img-top">
+            <a href="#" class="img-category text-decoration-none">
+              <p class="text-uppercase m-0">Tech &amp; Science</p>
+            </a>
+            <a href="#">
+              <img class="w-100" src="images/french-foreign-affairs-minister-jean-yves-le-drian.jpg" alt="" />
+            </a>
+          </div>
+
+          <div class="card-body">
+            <a href="#">
+              <h5 class="card-title font-weight-bold">
+                French
+                Foreign Minister Says U.S. Is Hesitating Over Global Leadership Role
+              </h5>
+            </a>
+
+            <p class="card-text ">Jean-Yves Le Drian told Le Monde that the coronavirus pandemic was causing a
+              "widening of fractures that have plagued the international order for years."</p>
+          </div>
+        </div>
+        <div class="card col-md-6 col-lg-3 container-fluid rounded-0">
+          <div class="card-img-top">
+            <a href="#" class="img-category text-decoration-none">
+              <p class="text-uppercase m-0">Tech &amp; Science</p>
+            </a>
+            <a href="#">
+              <img class="w-100" src="images/sneeze-cough-stock-getty.jpg" alt="" />
+            </a>
+          </div>
+
+          <div class="card-body">
+            <a href="#">
+              <h5 class="card-title font-weight-bold">
+                COVID-19
+              </h5>
+            </a>
+
+            <p class="card-text ">Experts told Newsweek how a person should decide whether to self-isolate when
+              they aren't sure if they have COVID-19 or the allergy.</p>
+          </div>
+        </div>
+        <div class="card col-md-6 col-lg-3 container-fluid rounded-0">
+          <div class="card-img-top">
+            <a href="#" class="img-category text-decoration-none">
+              <p class="text-uppercase m-0">Tech &amp; Science</p>
+            </a>
+            <a href="#">
+              <img class="w-100" src="images/prince-harry-meghan-markle-cardiff.jpg" alt="" />
+            </a>
+          </div>
+
+          <div class="card-body">
+            <a href="#">
+              <h5 class="card-title font-weight-bold">
+                Prince
+                Harry Will Not Be Happy As a Los Angeles Celebrity, Biographer Says
+              </h5>
+            </a>
+
+            <p class="card-text ">Prince Harry has "swapped royalty for celebrity" in Los Angeles but may
+              struggle to be happy after the first paparazzi images of him and Meghan Markle emerged last
+              week, his biographer tells Newsweek.</p>
+          </div>
+        </div>
+        <div class="card col-md-6 col-lg-3 container-fluid rounded-0">
+          <div class="card-img-top">
+            <a href="#" class="img-category text-decoration-none">
+              <p class="text-uppercase m-0">Tech &amp; Science</p>
+            </a>
+            <a href="#">
+              <img class="w-100" src="images/emory-university-hospital.jpg" alt="" />
+            </a>
+          </div>
+
+          <div class="card-body">
+            <a href="#">
+              <h5 class="card-title font-weight-bold">
+                94-Year-Old
+                Woman in Georgia Recovers From Coronavirus in Time For Birthday
+              </h5>
+            </a>
+
+            <p class="card-text ">Jean Yancy recovered after contracting COVID-19 at an assisted living faculty
+              last month. She is one of more than 19,000 Georgia residents known to have contracted the virus
+              since the outbreak began.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+    <div class="section-pick">
+      <div class="section-pick-item row ">
+        <a href="#" class="block-title col-md-12  text-decoration-none">U.S.</a>
+        <div class="card col-md container-fluid rounded-0 border-0">
+
+
+          <div class="card-img-top">
+            <a href="#">
+              <img class="w-100" src="images/texas-senator-ted-cruz.jpg" alt="" />
+            </a>
+          </div>
+
+          <div class="card-body">
+            <a href="#">
+              <h5 class="card-title font-weight-bold">
+                GOP
+                Lawmakers Defend Trump's Order Suspending Green Cards Amid Pandemic
+              </h5>
+            </a>
+
+
+          </div>
+        </div>
+        <div class="card col-md container-fluid rounded-0 border-0">
+
+          <div class="card-img-top">
+            <a href="#">
+              <img class="w-100" src="images/tony-spell-louisiana.jpg" alt="" />
+            </a>
+          </div>
+
+          <div class="card-body">
+            <a href="#">
+              <h5 class="card-title font-weight-bold">
+                Pastor
+                Tony Spell to Hold Service Day of Prison Release; Accused of Assault
+              </h5>
+            </a>
+
+
+          </div>
+        </div>
+
+        <div class="section-pick-bottom col-md container-fluid ">
+
+          <div class="card flex-row m-0 rounded-0 pb-2 ">
+
+            <div class="">
+              <a href="#" class="">
+                <img class="" src="images/los-angeles-patient.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="card-body">
+              <a href="#" class="first-color-hover">
+                <h5 class="card-title font-weight-bold m-0  ">
+                  CA
+                  Prepares 'Worst-Case' Coronavirus Guidelines to Prioritize Patients
+                </h5>
+              </a>
+
+
+            </div>
+          </div>
+          <div class="card flex-row m-0 rounded-0 py-2 ">
+
+            <div class="">
+              <a href="#" class="">
+                <img class="" src="images/usa-coronoavirus.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="card-body">
+              <a href="#" class="first-color-hover">
+                <h5 class="card-title font-weight-bold m-0  ">
+                  U.S.
+                  Has Low Global Coronavirus Mortality Rates But the Most Deaths
+                </h5>
+              </a>
+
+
+            </div>
+          </div>
+          <div class="card flex-row rounded-0 m-0 py-2 ">
+
+            <div class="">
+              <a href="#" class="">
+                <img class="" src="images/usns-comfort-medical-ship.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="card-body">
+              <a href="#" class="first-color-hover">
+                <h5 class="card-title font-weight-bold m-0  ">
+                  NY
+                  Gov. Cuomo Says State Doesn't Need USNS Comfort As Hospitalizations Fall
+                </h5>
+              </a>
+
+
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+      <div class="section-pick-item row">
+        <a href="#" class="block-title col-md-12 text-decoration-none">World</a>
+        <div class="card col-md container-fluid rounded-0 ">
+
+          <div class="card-img-top">
+            <a href="#">
+              <img class="w-100" src="images/iran-irgc-navy-us-fifth-fleet-gulf.jpg" alt="" />
+            </a>
+          </div>
+
+          <div class="card-body">
+            <a href="#">
+              <h5 class="card-title font-weight-bold">
+                Iran
+                Claims Enhanced Navy Has Better Missiles, Boats Faster Than U.S.
+              </h5>
+            </a>
+
+
+          </div>
+        </div>
+        <div class="card col-md container-fluid rounded-0 ">
+
+          <div class="card-img-top">
+            <a href="#">
+              <img class="w-100" src="images/oxford-university.jpg" alt="" />
+            </a>
+          </div>
+
+          <div class="card-body">
+            <a href="#">
+              <h5 class="card-title font-weight-bold">
+                Coronavirus
+                Vaccine Begins Human Trials in U.K. This Week
+              </h5>
+            </a>
+
+
+          </div>
+        </div>
+
+
+        <div class="section-pick-bottom col-md container-fluid ">
+
+          <div class="card flex-row m-0 rounded-0 pb-2 ">
+
+            <div class="">
+              <a href="#" class="">
+                <img class="" src="images/missouri-files-lawsuit-china-coronavirus.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="card-body">
+              <a href="#" class="first-color-hover">
+                <h5 class="card-title font-weight-bold m-0  ">
+                  Missouri
+                  Becomes First State to File COVID-19 Lawsuit Against China
+                </h5>
+              </a>
+
+
+            </div>
+          </div>
+          <div class="card flex-row m-0 rounded-0 py-2 ">
+
+            <div class="">
+              <a href="#" class="">
+                <img class="" src="images/lebanon-cannabis.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="card-body">
+              <a href="#" class="first-color-hover">
+                <h5 class="card-title font-weight-bold m-0  ">
+                  Lebanon
+                  Passes Legislation Legalizing Medical Marijuana Cultivation
+                </h5>
+              </a>
+
+
+            </div>
+          </div>
+          <div class="card flex-row rounded-0 m-0 py-2 ">
+
+            <div class="">
+              <a href="#" class="">
+                <img class="" src="images/countries-most-covid-19-cases.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="card-body">
+              <a href="#" class="first-color-hover">
+                <h5 class="card-title font-weight-bold m-0  ">
+                  Italy
+                  Sees First Drop in Active COVID-19 Cases, Spain Sees Second Decline
+                </h5>
+              </a>
+
+
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+      <div class="section-pick-item row">
+
+
+        <a href="#" class="block-title col-md-12 text-decoration-none">Business</a>
+        <div class="card col-md container-fluid rounded-0 ">
+
+          <div class="card-img-top">
+            <a href="#">
+              <img class="w-100" src="images/amazon-warehouse-worker.jpg" alt="" />
+            </a>
+          </div>
+
+          <div class="card-body">
+            <a href="#">
+              <h5 class="card-title font-weight-bold">
+                Amazon
+                Staffers Protest Company After 75 Test Positive for Coronavirus
+              </h5>
+            </a>
+
+
+          </div>
+        </div>
+        <div class="card col-md container-fluid rounded-0 ">
+
+          <div class="card-img-top">
+            <a href="#">
+              <img class="w-100" src="images/crude-oil-price-crash-storage.jpg" alt="" />
+            </a>
+          </div>
+
+          <div class="card-body">
+            <a href="#">
+              <h5 class="card-title font-weight-bold">
+                US
+                Gas Prices Hit Record Lows as Crude Oil Crashes Below $0 For First Time
+              </h5>
+            </a>
+
+
+          </div>
+        </div>
+
+
+        <div class="section-pick-bottom col-md container-fluid ">
+
+          <div class="card flex-row m-0 rounded-0 pb-2 ">
+
+            <div class="">
+              <a href="#" class="">
+                <img class="" src="images/gas-prices-crude-coronavirus-us-producers-storage.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="card-body">
+              <a href="#" class="first-color-hover">
+                <h5 class="card-title font-weight-bold m-0  ">
+                  U.S.
+                  Oil Prices Drop to Lowest in Two Decades as Crude Storage Fills Up
+                </h5>
+              </a>
+
+
+            </div>
+          </div>
+          <div class="card flex-row m-0 rounded-0 py-2 ">
+
+            <div class="">
+              <a href="#" class="">
+                <img class="" src="images/aoc.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="card-body">
+              <a href="#" class="first-color-hover">
+                <h5 class="card-title font-weight-bold m-0  ">
+                  Drugs,
+                  Stocks, Stores and…Kentucky Face Masks | Opinion
+                </h5>
+              </a>
+
+
+            </div>
+          </div>
+          <div class="card flex-row rounded-0 m-0 py-2 ">
+
+            <div class="">
+              <a href="#" class="">
+                <img class="" src="images/world-economy-recession-prediction-imf.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="card-body">
+              <a href="#" class="first-color-hover">
+                <h5 class="card-title font-weight-bold m-0  ">
+                  Global
+                  Economy Will Shrink by 3 Percent in 2020, IMF Forecasts
+                </h5>
+              </a>
+
+
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+      <div class="section-pick-item row">
+
+
+        <a href="#" class="block-title col-md-12 text-decoration-none">Tech &amp; Science</a>
+        <div class="card col-md container-fluid rounded-0 ">
+
+          <div class="card-img-top">
+            <a href="#">
+              <img class="w-100" src="images/humpback-mother-calf.jpg" alt="" />
+            </a>
+          </div>
+
+          <div class="card-body">
+            <a href="#">
+              <h5 class="card-title font-weight-bold">
+                Humpback
+                Whale Filmed Feeding Her Calf in Rare, Underwater Video
+              </h5>
+            </a>
+
+
+          </div>
+        </div>
+        <div class="card col-md container-fluid rounded-0 ">
+
+          <div class="card-img-top">
+            <a href="#">
+              <img class="w-100" src="images/elon-musk.jpg" alt="" />
+            </a>
+          </div>
+
+          <div class="card-body">
+            <a href="#">
+              <h5 class="card-title font-weight-bold">
+                Elon
+                Musk Says the Tesla Cybertruck Will Be Able to Float 'For a While'
+              </h5>
+            </a>
+
+
+          </div>
+        </div>
+
+
+        <div class="section-pick-bottom col-md container-fluid ">
+
+          <div class="card flex-row m-0 rounded-0 pb-2 ">
+
+            <div class="">
+              <a href="#" class="">
+                <img class="" src="images/australian-humpback-dolphins.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="card-body">
+              <a href="#" class="first-color-hover">
+                <h5 class="card-title font-weight-bold m-0  ">
+                  These
+                  Dolphins Beach Themselves As Part of a 'Risky' Feeding Behavior
+                </h5>
+              </a>
+
+
+            </div>
+          </div>
+          <div class="card flex-row m-0 rounded-0 py-2 ">
+
+            <div class="">
+              <a href="#" class="">
+                <img class="" src="images/star-exoplanets.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="card-body">
+              <a href="#" class="first-color-hover">
+                <h5 class="card-title font-weight-bold m-0  ">
+                  Six-Planet
+                  Star System Discovered Where Worlds Orbit in Near-Perfect Rhythm
+                </h5>
+              </a>
+
+
+            </div>
+          </div>
+          <div class="card flex-row rounded-0 m-0 py-2 ">
+
+            <div class="">
+              <a href="#" class="">
+                <img class="" src="images/brain-synapses.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="card-body">
+              <a href="#" class="first-color-hover">
+                <h5 class="card-title font-weight-bold m-0  ">
+                  Origin
+                  of Brain Network Crucial for Language Pushed Back 20 Million Years
+                </h5>
+              </a>
+
+
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+      <div class="section-pick-item row">
+
+
+        <a href="#" class="block-title col-md-12 text-decoration-none">Culture</a>
+        <div class="card col-md container-fluid rounded-0 ">
+
+          <div class="card-img-top">
+            <a href="#">
+              <img class="w-100" src="images/kelly-dodd.jpg" alt="" />
+            </a>
+          </div>
+
+          <div class="card-body">
+            <a href="#">
+              <h5 class="card-title font-weight-bold">
+                Kelly
+                Dodd Claims Coronavirus is "God's way of thinning the herd"
+              </h5>
+            </a>
+
+
+          </div>
+        </div>
+        <div class="card col-md container-fluid rounded-0 ">
+
+          <div class="card-img-top">
+            <a href="#">
+              <img class="w-100" src="images/how-watch-lets-go-crazy-grammy-salute-prince.jpg" alt="" />
+            </a>
+          </div>
+
+          <div class="card-body">
+            <a href="#">
+              <h5 class="card-title font-weight-bold">
+                How
+                to Watch 'Let's Go Crazy: The Grammy Salute to Prince'
+              </h5>
+            </a>
+
+
+          </div>
+        </div>
+
+
+        <div class="section-pick-bottom col-md container-fluid ">
+
+          <div class="card flex-row m-0 rounded-0 pb-2 ">
+
+            <div class="">
+              <a href="#" class="">
+                <img class="" src="images/val-kilmer.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="card-body">
+              <a href="#" class="first-color-hover">
+                <h5 class="card-title font-weight-bold m-0  ">
+                  Everything
+                  I Learned About 'Top Gun' From Val Kilmer's New Book
+                </h5>
+              </a>
+
+
+            </div>
+          </div>
+          <div class="card flex-row m-0 rounded-0 py-2 ">
+
+            <div class="">
+              <a href="#" class="">
+                <img class="" src="images/stanley-tucci.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="card-body">
+              <a href="#" class="first-color-hover">
+                <h5 class="card-title font-weight-bold m-0  ">
+                  He
+                  Can Do More Than Make a Negroni — Other Reasons Stanley Tucci Is A Boss
+                </h5>
+              </a>
+
+
+            </div>
+          </div>
+          <div class="card flex-row rounded-0 m-0 py-2 ">
+
+            <div class="">
+              <a href="#" class="">
+                <img class="" src="images/outer-banks-netflix.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="card-body">
+              <a href="#" class="first-color-hover">
+                <h5 class="card-title font-weight-bold m-0  ">
+                  'Outer
+                  Banks' on Netflix: Is John B.'s Dad Alive or Dead?
+                </h5>
+              </a>
+
+
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+      <div class="section-pick-item row">
+
+
+        <a href="#" class="block-title col-md-12 text-decoration-none">Sports</a>
+        <div class="card col-md container-fluid rounded-0 ">
+
+          <div class="card-img-top">
+            <a href="#">
+              <img class="w-100" src="images/wwe-performance-center-nxt.jpg" alt="" />
+            </a>
+          </div>
+
+          <div class="card-body">
+            <a href="#">
+              <h5 class="card-title font-weight-bold">
+                Florida
+                Government Asked to Shut Down WWE Television Tapings
+              </h5>
+            </a>
+
+
+          </div>
+        </div>
+        <div class="card col-md container-fluid rounded-0 ">
+
+          <div class="card-img-top">
+            <a href="#">
+              <img class="w-100" src="images/michael-jordan-chicago-bulls-hakeem-olajuwon.jpg" alt="" />
+            </a>
+          </div>
+
+          <div class="card-body">
+            <a href="#">
+              <h5 class="card-title font-weight-bold">
+                Hakeem
+                Olajuwon and Sam Bowie's Stats and Earnings Compared to MJ
+              </h5>
+            </a>
+
+
+          </div>
+        </div>
+
+
+        <div class="section-pick-bottom col-md container-fluid ">
+
+          <div class="card flex-row m-0 rounded-0 pb-2 ">
+
+            <div class="">
+              <a href="#" class="">
+                <img class="" src="images/tracy-mcgrady-nba.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="card-body">
+              <a href="#" class="first-color-hover">
+                <h5 class="card-title font-weight-bold m-0  ">
+                  Former
+                  NBA Great Tracy McGrady Urges League to Call Off Regular Season
+                </h5>
+              </a>
+
+
+            </div>
+          </div>
+          <div class="card flex-row m-0 rounded-0 py-2 ">
+
+            <div class="">
+              <a href="#" class="">
+                <img class="" src="images/oriole-park-mlb.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="card-body">
+              <a href="#" class="first-color-hover">
+                <h5 class="card-title font-weight-bold m-0  ">
+                  Which
+                  MLB Teams Are Paying Salaries in Full During the COVID-19 Pandemic?
+                </h5>
+              </a>
+
+
+            </div>
+          </div>
+          <div class="card flex-row rounded-0 m-0 py-2 ">
+
+            <div class="">
+              <a href="#" class="">
+                <img class="" src="images/tom-brady-new-england-patriots.jpg" alt="" />
+              </a>
+            </div>
+
+            <div class="card-body">
+              <a href="#" class="first-color-hover">
+                <h5 class="card-title font-weight-bold m-0  ">
+                  Tom
+                  Brady Caught Working Out in Florida Park Closed Due to Coronavirus
+                </h5>
+              </a>
+
+
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+
+
+
+    </div>
+
+    <div class="subscribe d-lg-flex border-top border-color-first mt-3 py-4">
+      <div class="subscribe-section flex-column d-flex p-0 col-lg-8 ">
+
+
+        <div class="opacity-5 block-title first-color ">SUBSCRIBE</div>
+        <div class="back-gray card p-3 border-0  d-md-flex flex-md-row rounded-0">
+
+          <div class="card-img-top w-auto mx-auto ">
+            <div class="subscribe-images position-relative">
+              <img class="subscribe-img-1" src="images/april-17-24-2020-cover.jpg" alt="" />
+              <img class="position-absolute subscribe-img-2" src="images/may-01-2020-cover-small.jpg" alt="" />
+            </div>
+
+          </div>
+
+          <div class="card-body d-flex flex-column ml-md-3 align-self-center">
+            <h5 class="card-title font-weight-bold text-center text-md-left">In-depth Stories You Don't See Elsewhere
+              About Topics
+              You Want to Read!</h5>
+
+
+            <p class="card-text text-center text-md-left p-0">All Access + Weekly Delivery.<br>Choose A Membership
+              That's Perfect for
+              You!</p>
+            <a href="#"
+              class="subscribe-button1 font-18   text-white back-first-color  align-items-center text-uppercase mx-auto ml-md-0">
+
+              Subscribe
+              <img class="subscribe-arrow" src="images/arrow.svg" alt="">
+
+
+            </a>
+          </div>
+
+
+
+        </div>
+
+      </div>
+      <div class="subscribe-section flex-column d-flex col-lg-4  ">
+
+
+        <div class="opacity-5 block-title first-color ">NEWSLETTER</div>
+        <div class="card m-0 p-0 border-0  d-md-flex flex-md-row rounded-0 h-100">
+
+          <div class="subscribe-img-3 w-100 mx-auto col-md-3 col-lg-6">
+          </div>
+
+          <div class="card-body d-flex flex-column  ml-md-3  col-lg-6 align-self-center">
+            <h5 class="card-title font-weight-bold text-center text-md-left">The Starting 5</h5>
+
+
+            <p class="card-text text-center text-md-left p-0">See why nearly a quarter of a million subscribers begin
+              their day with the Starting 5.</p>
+            <a href="#"
+              class="subscribe-button1 font-18   text-white back-first-color  align-items-center text-uppercase mx-auto ml-md-0">
+
+              SIGN UP
+              <img class="subscribe-arrow" src="images/arrow.svg" alt="">
+
+
+            </a>
+          </div>
+
+
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </main>
+
+  <footer class="py-4 container-fluid">
+    <div class="footer-top">
+      <div class="d-md-flex  justify-content-between">
+        <div class="d-md-flex align-items-end">
+          <a href="#">
+            <svg class="footer-logo first-color" version="1.1"  xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 395.6 60"
+              style="enable-background:new 0 0 395.6 60;" xml:space="preserve">
+              <g>
+                <path class="st0"
+                  d="M58.7,10.8h-5.6v48.3H42.8l-25.1-33v22.1h5.6v10.8H0V48.3h5.6V10.8H0V0h17.6L41,30.7V10.8h-5.6V0h23.2	L58.7,10.8L58.7,10.8z M95.8,38c0,0.9,0,1.8-0.1,2.7H70.3c-0.7,8.2,2.4,10.6,7.1,10.6c3.9,0,6.9-2.6,6.9-6.6h11	c-0.3,7.2-4,15.4-18.5,15.4c-14.5,0-21.3-10.5-21.3-22.1c0-10.5,7-21.6,21-21.6C89.9,16.3,95.8,25.6,95.8,38 M159,27.3h-3.7	l-9.4,31.8h-12.5l-5.9-17.4l-5.3,17.4h-12.8L98.8,27.4h-3.7V16.6h22.1v10.7h-5.6l5.8,16.9l7.6-27.6h6.8l9.3,27.6l5-16.9h-5.6V16.6	H159L159,27.3L159,27.3z M174.5,27.8c0,1.5,1.2,2.5,5.4,3.9l6,2c5.5,1.8,12.1,5.9,12.1,13.4c0,8.8-6.6,13-14.7,13	c-6.5,0-11.5-3.2-12.9-4.6V59h-10.8V44.4h10.6c0.3,4.8,4.6,7.3,8.5,7.3c3.2,0,4.7-1.4,4.7-3c0-2-1.2-3.1-6.5-4.8l-5.3-1.8	c-5.4-1.7-11.4-5.7-11.4-12.8c0-8.7,7.7-13.1,14.3-13.1c6.8,0,10.1,1.9,11.8,3.8l0.1-3.3H197v13.3h-11.2c-0.2-3.6-3.7-5.2-7.2-5.2	C175.8,24.8,174.5,26.1,174.5,27.8 M262.8,27.3h-3.7l-9.4,31.8h-12.5l-5.9-17.4L226,59.1h-12.8l-10.6-31.7h-3.7V16.6h22.1v10.7	h-5.6l5.8,16.9l7.6-27.6h6.8l9.3,27.7l5-16.9h-5.6V16.6h18.5V27.3z M302,37.9c0,0.9,0,1.8-0.1,2.7h-25.4	c-0.7,8.2,2.4,10.6,7.1,10.6c3.9,0,6.9-2.6,6.9-6.6h11c-0.3,7.2-4,15.4-18.5,15.4c-14.5,0-21.3-10.5-21.3-22.1	c0-10.5,7-21.6,21-21.6C296.1,16.2,302,25.5,302,37.9 M343.9,37.8c0,0.9,0,1.8-0.1,2.7h-25.4c-0.7,8.2,2.4,10.6,7.1,10.6	c3.9,0,6.9-2.6,6.9-6.6h11c-0.3,7.2-4,15.4-18.5,15.4c-14.5,0-21.3-10.5-21.3-22.1c0-10.5,7-21.6,21-21.6	C338,16.1,343.9,25.4,343.9,37.8 M389.9,59h-12.8l-13.3-17.3l-4.3,3.2v3.4h3.8V59h-19.6V48.3h3.7V10.6h-5.6V0h17.8v33.9l8.9-6.5	h-5.6V16.6h23.9v10.8h-3.7l-9.3,7l10.7,13.9h5.6L389.9,59L389.9,59z M395.6,56.6c0,0.5-0.1,0.9-0.4,1.2c-0.2,0.4-0.5,0.7-0.9,0.9	c-0.4,0.2-0.8,0.4-1.3,0.4c-0.5,0-0.9-0.1-1.2-0.4c-0.4-0.2-0.7-0.5-0.9-0.9c-0.2-0.4-0.4-0.8-0.4-1.2c0-0.5,0.1-0.9,0.4-1.2	c0.2-0.4,0.5-0.7,0.9-0.9c0.4-0.2,0.8-0.4,1.2-0.4c0.5,0,0.9,0.1,1.3,0.4c0.4,0.2,0.7,0.5,0.9,0.9	C395.5,55.8,395.6,56.2,395.6,56.6 M394.6,58c0.4-0.4,0.6-0.9,0.6-1.4c0-0.6-0.2-1-0.6-1.4s-0.9-0.6-1.4-0.6s-1,0.2-1.4,0.6	c-0.4,0.4-0.6,0.9-0.6,1.4c0,0.6,0.2,1,0.6,1.4c0.4,0.4,0.9,0.6,1.4,0.6S394.2,58.4,394.6,58 M393.6,56.8c0.1,0.1,0.2,0.1,0.2,0.1	c0.1,0.1,0.2,0.2,0.2,0.3c0,0,0.2,0.3,0.4,0.8h-0.8c-0.3-0.5-0.4-0.8-0.5-0.9c-0.1-0.1-0.2-0.2-0.3-0.2c0,0-0.1,0-0.1,0v1.1h-0.6	v-2.6h1.2c0.4,0,0.6,0.1,0.7,0.2c0.2,0.2,0.2,0.3,0.2,0.6c0,0.2-0.1,0.4-0.2,0.5C393.9,56.6,393.8,56.7,393.6,56.8 M393.5,56.3	c0.1-0.1,0.1-0.2,0.1-0.3s-0.1-0.2-0.1-0.3c-0.1-0.1-0.2-0.1-0.4-0.1h-0.3v0.7h0.3C393.3,56.4,393.4,56.4,393.5,56.3 M318.4,33.5	h13.9c0-6-3.9-8.4-6.8-8.4C322.1,25.2,318.6,27.9,318.4,33.5 M276.5,33.6h13.9c0-6-3.9-8.4-6.8-8.4C280.3,25.2,276.8,28,276.5,33.6 M70.3,33.7h13.9c0-6-3.9-8.4-6.8-8.4C74.1,25.3,70.6,28.1,70.3,33.7">
+                </path>
+              </g>
+            </svg>
+          </a>
+          <p class="newsweek-2020">© 2020 NEWSWEEK
+          </p>
+        </div>
+        <ul class="footer-icons d-flex">
+          <li class="mr-2"><a href="#"><i class="fab fa-facebook"></i></a></li>
+          <li class="mr-2"><a href="#"><i class="fab fa-twitter"></i></a></li>
+          <li class="mr-2"><a href="#"><i class="fab fa-instagram"></i></a></li>
+          <li class="mr-2"><a href="#"><i class="fab fa-tumblr"></i></a></li>
+          <li class="mr-2"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="footer-bottom border-top border-color-first">
+      <div class="d-flex  ">
+        <div class="font-weight-bold">
+          Editions:
+        </div>
+        <ul class="ml-3 d-flex mb-2">
+          <li class="mr-3"><a href="#"> U.S. Edition</a></li>
+          <li class="mr-3"><a href="#"> 日本</a></li>
+          <li class="mr-3"><a href="#"> Pakistan</a></li>
+          <li class="mr-3"><a href="#"> Polska</a></li>
+          <li class="mr-3"><a href="#"> România</a></li>
+        </ul>
+      </div>
+      <ul class="d-flex flex-wrap ">
+        <li class="mr-3"><a href="#">About Us</a></li>
+        <li class="mr-3"><a href="#">Corrections</a></li>
+        <li class="mr-3"><a href="#">Contact Us</a></li>
+        <li class="mr-3"><a href="#">Editorial Guidelines</a></li>
+        <li class="mr-3"><a href="#">Advertise</a></li>
+        <li class="mr-3"><a href="#">Copyright</a></li>
+        <li class="mr-3"><a href="#">Terms &amp; Conditions</a></li>
+        <li class="mr-3"><a href="#">Privacy Policy</a></li>
+        <li class="mr-3"><a href="#">Cookie Policy</a></li>
+        <li class="mr-3"><a href="#">Terms of Sale</a></li>
+        <li class="mr-3"><a href="#">Archive</a></li>
+        <li class="mr-3"><a href="#">Announcements</a></li>
+        <li class="mr-3"><a href="#">Consent preferences</a></li>
+      </ul>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+
+</body>
+
+</html>
