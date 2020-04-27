@@ -516,7 +516,7 @@ svg.logo {
 .subscribe-img-3 {
   
   min-height:160px;
-  background: url("/images/starting5-homepage.png") center center / cover no-repeat;
+  background: url("../images/starting5-homepage.png") center center / cover no-repeat;
 }
 
 .subscribe-button1 {
@@ -588,11 +588,11 @@ footer a:hover {
 
 @media(min-width:768px) {
  
-  .sticky-md {
-    position: sticky;
-    bottom:0;
-    align-self: flex-end;
-  }
+    .sticky-md {
+      position: sticky;
+      bottom:0;
+      align-self: flex-end;
+    }
 
 }
 
