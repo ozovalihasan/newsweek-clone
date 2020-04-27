@@ -12,11 +12,11 @@ In this Microverse project, we made use classes provided by Bootstrap to make a 
 
 - Html
 - CSS
-- JavaScript
+- JavaScript    
 
 ## Live Demo
 
-[Live Demo Link](https://rawcdn.githack.com/ozovalihasan/newsweek-clone/ed3cbe1f5dc382743c2990c19bcbba26e2a5aaff/index.html)
+[Live Demo Link](https://rawcdn.githack.com/ozovalihasan/newsweek-clone/a1ffe9902ab832ab54a5c450a15f3fcfa47fb863/index.html)
 
 ## Getting Started
 
