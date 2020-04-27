@@ -16,7 +16,7 @@ In this Microverse project, we made use classes provided by Bootstrap to make a 
 
 ## Live Demo
 
-[Live Demo Link](https://rawcdn.githack.com/ozovalihasan/newsweek-clone/a1ffe9902ab832ab54a5c450a15f3fcfa47fb863/index.html)
+[Live Demo Link](https://rawcdn.githack.com/ozovalihasan/newsweek-clone/65f88d1b32927ce3797f44b68adeb4230524d311/index.html)
 
 ## Getting Started
 
